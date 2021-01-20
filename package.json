@@ -1,0 +1,22 @@
+{
+  "name": "members-only-club",
+  "version": "1.0.0",
+  "description": "A secret group where only members a allowed to share ",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./server/server.js",
+    "dev": "concurrently \"npm run start\" \"cd client && npm run start\""
+  },
+  "author": "Dibwe Kalangu",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.1.0",
+    "express": "^4.16.4",
+    "mongoose": "^5.3.6"
+  },
+  "devDependencies": {
+    "concurrently": "^4.0.1",
+    "nodemon": "^1.18.4"
+  }
+}
