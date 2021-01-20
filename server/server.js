@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
   res.status(200).send(template())
 })
 
-let port = process.env.PORT || 3000
+let port = process.env.PORT || 5000
 app.listen(port, function onStart(err) {
   if (err) {
     console.log(err)
