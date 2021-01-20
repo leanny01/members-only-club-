@@ -1,7 +1,7 @@
 import React  from 'react'
 import {Route,Switch}  from 'react-router-dom'
 import Messages from './components/messages'
-import Home from './components/home'
+import Home from './components/core/Home'
 
 const MainRouter = ()=>{
     return (
@@ -12,3 +12,5 @@ const MainRouter = ()=>{
         </div>
     )
 }
+
+export default MainRouter;
