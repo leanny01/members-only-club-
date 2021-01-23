@@ -25,7 +25,7 @@ const create = (req,res,next)=>{
     message.save((err, result)=>{
         if(err)
             return res.status(400).json({error:'Something went wrong, \n ',err})
-        res.status(200).json({message:'message successfully created'})
+        res.status(200).json(result)
     })
 }
 
@@ -36,7 +36,7 @@ const update = (req,res,next)=>{
     message.save((err,result)=>{
         if(err)
             return res.status(400).json({error:'Error! Could not delete message, \n', err})
-        res.status(200).json({message:'message successfully updated'})
+        res.status(200).json(result)
     })
 }
 
@@ -45,7 +45,21 @@ const remove = (req,res,next)=>{
     message.remove((err,deletedMessage)=>{
         if(err)
             return res.status(400).json({error:'Error! could not deleted message, \n',err})
-        res.status(200).json({message:'Message successfully deleted'})     
+        res.status(200).json(deletedMessage)     
     })  
 }
-const list = (req,res,next)=>{}
+const list = (req,res)=>{
+    Message.find((err,messages)=>{
+        if(err)
+            return res.status(400).json({error:'Something went wrong while retrieving messages, \n',err})
+        res.status(200).json(messages)
+    })
+}
+
+export default {
+    messageById,
+    remove,
+    list,
+    update,
+    create
+}
