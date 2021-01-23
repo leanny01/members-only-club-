@@ -19,6 +19,9 @@ const messageById = (req,res,next,id)=>{
 
 }
 
+const read = (req,res,next)=>{
+    return req.json(message)
+}
 const create = (req,res,next)=>{
     const message = new Message(req.body)
     
