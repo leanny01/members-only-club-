@@ -1,4 +1,5 @@
 import Message from './../models/message.model' 
+import _ from 'lodash'
 
 
 /** 
@@ -23,13 +24,28 @@ const create = (req,res,next)=>{
     
     message.save((err, result)=>{
         if(err)
-            return res.status(400).json({error:'Somthing went wrong, \n ',err})
-        return res.status(200).json({message:'message successfully created'})
+            return res.status(400).json({error:'Something went wrong, \n ',err})
+        res.status(200).json({message:'message successfully created'})
     })
 }
+
 const update = (req,res,next)=>{
-    let message = {...req.message, req.body}
-    
+    let message =  req.message
+    message = _.extend(message,req.body)
+    message.updated = Date.now()
+    message.save((err,result)=>{
+        if(err)
+            return res.status(400).json({error:'Error! Could not delete message, \n', err})
+        res.status(200).json({message:'message successfully updated'})
+    })
 }
-const delete = ()=>{}
-const list = ()={}
+
+const remove = (req,res,next)=>{
+    const message = req.message
+    message.remove((err,deletedMessage)=>{
+        if(err)
+            return res.status(400).json({error:'Error! could not deleted message, \n',err})
+        res.status(200).json({message:'Message successfully deleted'})     
+    })  
+}
+const list = (req,res,next)=>{}
