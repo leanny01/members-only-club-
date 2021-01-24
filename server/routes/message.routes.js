@@ -1,13 +1,14 @@
-import express from 'express'
-import messageCtrl from '../controllers/message.controller'
+const  express = require('express')
+const  messageCtrl = require('./../controllers/message.controller')
 
 const router = express.Router()
 
-router.route('/messages')
+
+router.route('/')
     .get(messageCtrl.list)
     .post(messageCtrl.create)
 
-router.route('/messages/:messageId')
+router.route('/:messageId')
     .get(messageCtrl.read)
     .put(messageCtrl.update)
     .delete(messageCtrl.remove)
@@ -15,4 +16,6 @@ router.route('/messages/:messageId')
 
 router.param('messageId',messageCtrl.messageById)
 
-export default router 
+//exports.default = router 
+
+module.exports = router

@@ -2,7 +2,7 @@
   "name": "members-only-club",
   "version": "1.0.0",
   "description": "A secret group where only members a allowed to share ",
-  "main": "index.js",
+  "main": "./server/server1.js",
   "scripts": {
     "start": "node ./server/server",
     "client": "cd client && npm start",
@@ -13,10 +13,17 @@
   "author": "Dibwe Kalangu",
   "license": "MIT",
   "dependencies": {
-    "body-parser": "^1.18.3",
+    "body-parser": "^1.18.2",
     "dotenv": "^6.1.0",
     "express": "^4.16.4",
-    "mongoose": "^5.3.6"
+    "mongoose": "^5.3.6",
+    "compression": "^1.7.2",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
+    "express-jwt": "^5.3.1",
+    "helmet": "^3.12.0",
+    "jsonwebtoken": "^8.2.1",
+    "lodash": "^4.17.10"
   },
   "devDependencies": {
     "concurrently": "^4.0.1",

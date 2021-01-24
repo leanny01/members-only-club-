@@ -1,15 +1,20 @@
 const path = require('path')
-const express = require('express')
-const  MongoClient = require('mongodb')
+const MongoClient = require('mongoose')
+
+const app = require('./express')
 
 require('dotenv').config();
 
 
-const app = express()
+
+
+
 
 app.get('/', (req, res) => {
-  res.status(200).send(template())
+  res.status(200).send('Welcome to member only API service')
 })
+
+
 
 let port = process.env.PORT || 5000
 app.listen(port, function onStart(err) {
@@ -19,10 +24,12 @@ app.listen(port, function onStart(err) {
   console.info('Server started on port %s.', port)
 })
 
-const url = process.env.MONGODB_URI || 'mongodb://localhost:27017/mernSimpleSetup'
 
-// Use connect method to connect to the server
-MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true },(err, db)=>{
-  console.log("Connected successfully to mongodb server")
-  db.close()
-})
+const url = 'mongodb://admin:1234@0.0.0.0:27017/member-only-db'
+
+const mongodb_url = process.env.MONGODB_URI || url
+
+MongoClient.connect(mongodb_url,{ useNewUrlParser: true,useUnifiedTopology: true })
+    .then(() => console.log(`connected toDB`))
+.catch( err =>console.log(`could not connected toDB ${err}`))
+
