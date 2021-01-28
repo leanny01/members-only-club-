@@ -17,9 +17,10 @@ app.listen(port, function onStart(err) {
 })
 
 
-const mongodb_url = 'mongodb://admin:1234@0.0.0.0:27017/member-only-db?authSource=admin'
+const local_mongodb_url = 'mongodb://0.0.0.0:27017/member-only-db?authSource=admin'
 
-//const mongodb_url =  process.env.MONGODB_URI 
+const mongodb_url =  process.env.DEV_ENV ==='dev' ? local_mongodb_url : process.env.MONGODB_URI 
+console.log(mongodb_url)
 
 MongoClient.connect(mongodb_url,{ useNewUrlParser: true,useUnifiedTopology: true })
     .then(() => console.log(`connected toDB`))

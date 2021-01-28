@@ -10,9 +10,13 @@ messageSchema = ({
         type:String,
         required:'author\'s ID is required', 
     },
+    authorFullName:{
+        type:String,
+        required:'author\'s name is required'
+    },
     created:{
         type:Date,
-        default: Date.now()
+        default: '-'
     },
     updated:Date
 

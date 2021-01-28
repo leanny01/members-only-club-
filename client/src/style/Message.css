@@ -1,0 +1,14 @@
+.message-list-root{
+    display: flex; 
+    flex-direction:row;
+    flex-wrap: wrap;
+   
+    
+}
+.message-list-root > .item {
+   
+    width: 30%;
+    maxWidth: 345px;
+    margin:1em;
+   
+}

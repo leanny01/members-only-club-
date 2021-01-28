@@ -59,6 +59,7 @@ exports.list = (req,res)=>{
     Message.find((err,messages)=>{
         if(err)
             return res.status(400).json({error:'Something went wrong while retrieving messages',err})
+        
         res.status(200).json(messages)
     })
 }
